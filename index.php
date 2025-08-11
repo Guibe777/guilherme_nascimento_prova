@@ -58,5 +58,11 @@
     </form>
     
     <p><a href="recuperar_senha.php">Esqueci a minha senha</a></p>
+
+    
+    <address>
+        Guilherme do Nascimento
+    </address>
+    
 </body>
 </html>

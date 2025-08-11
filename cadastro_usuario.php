@@ -62,5 +62,10 @@
     </form>
 
     <a href="principal.php">Voltar</a>
+    
+    <address>
+        Guilherme do Nascimento
+    </address>
+    
 </body>
 </html>

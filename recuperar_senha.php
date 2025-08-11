@@ -52,5 +52,10 @@
 
         <button type="submit">Enviar a senha temporária</button>
     </form>
+    
+    <address>
+        Guilherme do Nascimento
+    </address>
+    
 </body>
 </html>
