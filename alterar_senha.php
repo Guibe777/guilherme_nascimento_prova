@@ -4,7 +4,7 @@
 
     // Garante que o usuário esteja logado
     if(!isset($_SESSION['id_usuario'])) {
-        echo "<script>alert('Acesso Negado!'); window.location.href='login.php';</script>";
+        echo "<script>alert('Acesso Negado!'); window.location.href='index.php';</script>";
         exit();
     }
 
@@ -33,7 +33,7 @@
 
             if($stmt->execute()) {
                 session_destroy(); // Finaliza a sessão
-                echo "<script>alert('Senha alterada com sucesso! Faça login novamente');window.location.href='login.php';</script>";
+                echo "<script>alert('Senha alterada com sucesso! Faça login novamente');window.location.href='index.php';</script>";
             }
             else {
                 echo "<script>alert('Erro ao alterar a senha!');</script>";
