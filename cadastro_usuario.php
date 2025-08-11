@@ -4,7 +4,7 @@
 
     // Verifica se o usuário tem permissão supondo que o perfil 1 seja o ADMIN
     if($_SESSION['perfil'] != 1) {
-        echo "Acesso Ne(ig)gado!";
+        echo "Acesso Negado!";
     }
 
     if($_SERVER["REQUEST_METHOD"] == "POST") {
