@@ -16,7 +16,7 @@
             $busca = trim($_POST['busca_usuario']);
 
             // Verifica se a busca é um número (ID) ou um NOME
-            if(is_numerica($busca)) {
+            if(is_numeric($busca)) {
                 $sql = "SELECT * FROM usuario WHERE id_usuario = :busca";
                 $stmt = $pdo->prepare($sql);
                 $stmt->bindParam(':busca', $busca, PDO::PARAM_INT);
@@ -24,7 +24,7 @@
             else {
                 $sql = "SELECT * FROM usuario WHERE nome LIKE :busca_nome";
                 $stmt = $pdo->prepare($sql);
-                $stmt->bindParam(':busca_nome', "%$busca%", PDO::PARAM_STR);
+                $stmt->bindValue(':busca_nome', "%$busca%", PDO::PARAM_STR);
             }
 
             $stmt->execute();
