@@ -78,6 +78,17 @@
                 <option value="3" <?=$usuario['id_perfil'] == 3 ?'select':''?>>Almoxarife</option>
                 <option value="4" <?=$usuario['id_perfil'] == 4 ?'select':''?>>Cliente</option>
             </select>
+
+            <!-- Se o usuário logado for ADM, exibir a opção de alterar senha -->
+            <?php if($_SESSION['perfil'] == 1): ?>
+                <label for="nova_senha">Nova senha</label>
+                <input type="password" id="nova_senha" name="nova_senha">
+            <?php endif; ?>
+
+            <button type="submit">Alterar</button>
+            <button type="reset">Cancelar</button>
         </form>
+    <?php endif; ?>
+    <a href="principal.php">Voltar</a>
 </body>
 </html>
