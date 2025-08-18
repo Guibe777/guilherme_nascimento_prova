@@ -39,18 +39,20 @@ $usuarios = $stmt->fetchALL(PDO::FETCH_ASSOC);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <title>Buscar Usuario</title>
 </head>
 <body>
-    <h2>Lista de Usuario</h2>
+    <center><h2>Lista de Usuario</h2></center>
 
     <form action="buscar_usuario.php" method="POST">
         <label for="busca">Digite o ID ou NOME</label>
         <input type="text" id="busca" name="busca">
         <button type="submit">Pesquisar</button>
     </form>
+    <center><a href="principal.php" style="color: white; border: none; border-radius: 5px; padding: 10px; background-color: #007bff; font-size: 16px; text-decoration: none; /* remove o sublinhado */;">Voltar</a></center>
         <?php if(!empty($usuarios)): ?>
-            <table border="1">
+            <table class="table table-dark table-striped">
                 <tr>
                     <th>ID</th>
                     <th>Nome</th>
@@ -77,7 +79,5 @@ $usuarios = $stmt->fetchALL(PDO::FETCH_ASSOC);
             <?php else:?>
                 <p>Nenhum usuario encontrado.</p>
             <?php endif;?>
-
-            <a href="principal.php">VOLTAR</a>
 </body>
 </html>
