@@ -140,5 +140,6 @@ if(isset($_GET['id']) && is_numeric($_GET['id'])){
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <center><address style="transform: translateY(20px);">Guilherme do Nascimento</address></center>
 </body>
 </html>
