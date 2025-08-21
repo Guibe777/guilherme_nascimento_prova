@@ -24,7 +24,7 @@
             else {
                 $sql = "SELECT * FROM funcionario WHERE nome_funcionario LIKE :busca_nome_funcionario";
                 $stmt = $pdo->prepare($sql);
-                $stmt->bindValue(':busca_nome_funcionario', "$busca%", PDO::PARAM_STR);
+                $stmt->bindValue(':busca_nome_funcionario', "%$busca%", PDO::PARAM_STR);
             }
 
             $stmt->execute();
