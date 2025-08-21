@@ -89,6 +89,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastrar Usuário</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="validacoes.js"></script>
 </head>
 <body>
 
@@ -134,7 +135,7 @@
         <button type="reset">Cancelar</button>
     </form>
 
-    <a href="principal.php" style="color: white; border: none; border-radius: 5px; padding: 10px; background-color: #007bff; font-size: 16px; text-decoration: none; /* remove o sublinhado */">Voltar</a>
-    
+    <a href="principal.php" style="color: white; border: none; border-radius: 5px; padding: 10px; background-color: #007bff; font-size: 16px; text-decoration: none; /* remove o sublinhado */ transform: translateY(50px);">Voltar</a>
+    <center><address style="transform: translateY(30px);">Guilherme do Nascimento</address></center>
 </body>
 </html>
