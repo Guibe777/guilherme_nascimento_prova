@@ -163,5 +163,6 @@ $opcoes_menu = $permissoes["$id_perfil"];
         </form>
     <?php endif; ?>
     <a href="principal.php" style="color: white; border: none; border-radius: 5px; padding: 10px; background-color: #007bff; font-size: 16px; text-decoration: none; /* remove o sublinhado */">Voltar</a>
+    <center><address style="transform: translateY(220px);">Guilherme do Nascimento</address></center>
 </body>
 </html>
