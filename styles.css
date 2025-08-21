@@ -143,6 +143,7 @@ label {
 input[type="text"],
 input[type="email"],
 input[type="password"],
+input[type="tel"],
 select {
     width: 80%; /* Ocupa toda a largura do formulário */
     padding: 8px;
@@ -167,4 +168,11 @@ button{
 
 button:hover {
     background-color: #0056b3; /* Azul mais escuro ao passar o mouse */
+}
+
+.voltar {
+    display: flex;
+    justify-content: center;
+    width: 5%;
+    transform: translate(640px, -40px);
 }
