@@ -98,9 +98,18 @@ $opcoes_menu = $permissoes["$id_perfil"];
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alterar Usuário</title>
     <link rel="stylesheet" href="styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Certifique-se de que o JAVASCRIPT está sendo carregado corretamente -->
     <script src="scripts.js"></script>
+
+    <style>
+        button {
+            margin: 10px;
+            border-radius: 5px;
+        }
+    </style>
+
 </head>
 <body>
 
@@ -123,7 +132,7 @@ $opcoes_menu = $permissoes["$id_perfil"];
         </ul>
     </nav>
 
-    <h2>Alterar Usuário</h2>
+    <center><h2 style="transform: translateY(25px);">Alterar Usuário</h2></center>
     <form action="alterar_usuario.php" method="POST">
         <label for="busca_usuario">Digite o ID ou nome do usuário</label>
         <input type="text" id="busca_usuario" name="busca_usuario" required onkeyup="buscarSugestoes()">
@@ -162,7 +171,10 @@ $opcoes_menu = $permissoes["$id_perfil"];
             <button type="reset">Cancelar</button>
         </form>
     <?php endif; ?>
-    <a href="principal.php" style="color: white; border: none; border-radius: 5px; padding: 10px; background-color: #007bff; font-size: 16px; text-decoration: none; /* remove o sublinhado */">Voltar</a>
+
+    <!-- Botão de voltar -->
+    <center><a href="principal.php" class="btn btn-primary mt-3">Voltar</a></center>
+    
     <center><address style="transform: translateY(220px);">Guilherme do Nascimento</address></center>
 </body>
 </html>
