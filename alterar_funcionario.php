@@ -159,7 +159,7 @@ $opcoes_menu = $permissoes["$id_perfil"];
             <input type="text" id="endereco" name="endereco" value="<?=htmlspecialchars($funcionario['endereco'])?>" required>
 
             <label for="telefone">Telefone:</label>
-            <input type="tel" id="email" name="telefone" value="<?=htmlspecialchars($funcionario['telefone'])?>" maxlength="15" required>
+            <input type="tel" id="email" name="telefone" value="<?=htmlspecialchars($funcionario['telefone'])?>" maxlength="15" placeholder="(XX) XXXXX-XXXX ou (XX) XXXX-XXXX" required>
 
             <button type="submit">Alterar</button>
             <button type="reset">Cancelar</button>
