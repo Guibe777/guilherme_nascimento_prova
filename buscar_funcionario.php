@@ -2,7 +2,7 @@
     session_start();
     require_once 'conexao.php';
 
-    // VERIFICA SE O FUNCIONÁRIO TEM PERMISSÃO DE ADM OU SECRETARIA
+    // VERIFICA SE O USUÁRIO TEM PERMISSÃO DE ADM OU SECRETARIA
     if($_SESSION['perfil']!=1 && $_SESSION['perfil']!=2){
         echo "<script>alert('Acesso negado!');window.location.href='principal.php';</script>";
         exit();
@@ -32,8 +32,7 @@
 $stmt->execute();
 $funcionarios = $stmt->fetchALL(PDO::FETCH_ASSOC);
 
-// Menu
-// Obtendo o nome do perfil do funcionário logado
+// Obtendo o nome do perfil do usuário logado
 $id_perfil = $_SESSION['perfil'];
 $sqlPerfil = "SELECT nome_perfil FROM perfil WHERE id_perfil = :id_perfil";
 $stmtPerfil = $pdo->prepare($sqlPerfil);
@@ -94,11 +93,21 @@ $opcoes_menu = $permissoes["$id_perfil"];
     <link rel="stylesheet" href="styles.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <title>Buscar Funcionário</title>
+
+    <!-- Deixando os botões bonitinhos -->
+    <style>
+        table {
+            max-width: 90%;
+            margin-left: 5%;
+            border: 10px solid;
+        }
+    </style>
+
 </head>
 <body>
 
-<!-- Menu -->
-<nav>
+    <!-- Menu -->
+    <nav>
         <ul class="menu">
             <?php foreach($opcoes_menu as $categoria => $arquivos): ?>
                 <li class="dropdown">
@@ -116,6 +125,7 @@ $opcoes_menu = $permissoes["$id_perfil"];
         </ul>
     </nav>
 
+    <!-- Campo de busca do funcionário -->
     <center><h2>Lista de Funcionários</h2></center>
 
     <form action="buscar_funcionario.php" method="POST">
@@ -124,10 +134,12 @@ $opcoes_menu = $permissoes["$id_perfil"];
         <button type="submit">Pesquisar</button>
     </form>
 
-    <a href="principal.php" class="voltar" style="color: white; border: none; border-radius: 5px; padding: 10px; background-color: #007bff; font-size: 16px; text-decoration: none; /* remove o sublinhado */;">Voltar</a>
-
+    <!-- Botão de voltar -->
+    <center><a href="principal.php" class="btn btn-primary mt-3" style="transform: translateY(-40px);">Voltar</a></center>
+    
+    <!-- Tabela com informações dos funcionários -->
         <?php if(!empty($funcionarios)): ?>
-            <table class="table table-dark table-striped">
+            <table class="table table-sm table-dark">
                 <tr>
                     <th>ID</th>
                     <th>Nome</th>
@@ -137,6 +149,7 @@ $opcoes_menu = $permissoes["$id_perfil"];
                     <th>Ações</th>
                 </tr>
 
+            <!-- Pegando as informações de cada funcionário -->
             <?php foreach($funcionarios as $funcionario): ?>
 
                 <tr>
@@ -146,8 +159,9 @@ $opcoes_menu = $permissoes["$id_perfil"];
                     <td><?=htmlspecialchars($funcionario['endereco'])?></td>
                     <td><?=htmlspecialchars($funcionario['telefone'])?></td>
                     <td>
-                        <a href="alterar_funcionario.php?id=<?=htmlspecialchars($funcionario['id_funcionario'])?>">Alterar</a>
-                        <a href="excluir_funcionario.php?id=<?=htmlspecialchars($funcionario['id_funcionario'])?>"
+                        <!-- Botões de excluir e alterar -->
+                        <a class="btn btn-success" href="alterar_funcionario.php?id=<?=htmlspecialchars($funcionario['id_funcionario'])?>">Alterar</a>
+                        <a class="btn btn-danger" href="excluir_funcionario.php?id=<?=htmlspecialchars($funcionario['id_funcionario'])?>"
                         onclick="return confirm('Tem certeza que deseja excluir este funcionário?')">Excluir</a>
                     </td>
                 </tr>
