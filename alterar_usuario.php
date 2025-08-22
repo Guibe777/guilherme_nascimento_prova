@@ -148,7 +148,7 @@ $opcoes_menu = $permissoes["$id_perfil"];
             <input type="hidden" name="id_usuario" value="<?=htmlspecialchars($usuario['id_usuario'])?>">
 
             <label for="nome">Nome:</label>
-            <input type="text" id="nome" name="nome" value="<?=htmlspecialchars($usuario['nome'])?>" required>
+            <input type="text" id="nome" name="nome" oninput="this.value=this.value.replace(/[^a-zA-ZÀ-ÿ\s]/g,'')" value="<?=htmlspecialchars($usuario['nome'])?>" required>
 
             <label for="email">E-mail:</label>
             <input type="email" id="email" name="email" value="<?=htmlspecialchars($usuario['email'])?>" required>
