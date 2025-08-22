@@ -90,15 +90,13 @@
     <title>Cadastrar Usuário</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="validacoes.js"></script>
-
     <style>
         button {
             margin: 10px;
             border-radius: 5px;
         }
     </style>
-    
+
 </head>
 <body>
 
@@ -122,9 +120,9 @@
     </nav>
 
     <center><h2 style="transform: translateY(20px);">Cadastrar Usuário</h2></center>
-    <form action="cadastro_usuario.php" method="POST">
+    <form action="cadastro_usuario.php" method="POST" onsubmit="return validarFuncionario()">
         <label for="nome">Nome:</label>
-        <input type="text" id="nome" name="nome" required>
+        <input type="text" id="nome" name="nome" oninput="this.value=this.value.replace(/[^a-zA-ZÀ-ÿ\s]/g,'')" required>
 
         <label for="email">Email:</label>
         <input type="email" id="email" name="email" required>
@@ -148,5 +146,29 @@
     <center><a href="principal.php" class="btn btn-primary mt-3">Voltar</a></center>
 
     <center><address style="transform: translateY(30px);">Guilherme do Nascimento</address></center>
+
+    <script>
+        function validarFuncionario() {
+            let nome = document.getElementById("nome").value;
+            let email = document.getElementById("email").value;
+
+            // Tamanho mínimo do nome
+            if (nome.length < 3) {
+                alert("O nome do funcionário deve ter pelo menos 3 caracteres.");
+                return false;
+            }
+
+            // Validando o Email
+            let regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!regexEmail.test(email)) {
+                alert("Digite um e-mail válido.");
+                return false;
+            }
+
+            return true;
+
+            }
+
+    </script>
 </body>
 </html>
