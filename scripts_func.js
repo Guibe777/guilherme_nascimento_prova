@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-// Função para buscar sugestões de usuários enquanto digita
+// Função para buscar sugestões de funcionários enquanto digita
 function buscarSugestoes() {
     let busca = document.getElementById("busca_funcionario").value;
     
@@ -42,7 +42,7 @@ function buscarSugestoes() {
         .catch(error => console.error("Erro ao buscar sugestões:", error)); // Adicionado tratamento de erro
 }
 
-// Função para selecionar um usuário da lista de sugestões
+// Função para selecionar um funcionário da lista de sugestões
 function selecionarFuncionario(id, nome) {
     document.getElementById("busca_funcionario").value = nome;
     document.getElementById("sugestoes").innerHTML = "";
