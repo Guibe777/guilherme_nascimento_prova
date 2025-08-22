@@ -89,7 +89,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastrar Usuário</title>
     <link rel="stylesheet" href="styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="validacoes.js"></script>
+
+    <style>
+        button {
+            margin: 10px;
+            border-radius: 5px;
+        }
+    </style>
+    
 </head>
 <body>
 
@@ -112,7 +121,7 @@
         </ul>
     </nav>
 
-    <h2>Cadastrar Usuário</h2>
+    <center><h2 style="transform: translateY(20px);">Cadastrar Usuário</h2></center>
     <form action="cadastro_usuario.php" method="POST">
         <label for="nome">Nome:</label>
         <input type="text" id="nome" name="nome" required>
@@ -135,7 +144,9 @@
         <button type="reset">Cancelar</button>
     </form>
 
-    <a href="principal.php" style="color: white; border: none; border-radius: 5px; padding: 10px; background-color: #007bff; font-size: 16px; text-decoration: none; /* remove o sublinhado */ transform: translateY(50px);">Voltar</a>
+    <!-- Botão de voltar -->
+    <center><a href="principal.php" class="btn btn-primary mt-3">Voltar</a></center>
+
     <center><address style="transform: translateY(30px);">Guilherme do Nascimento</address></center>
 </body>
 </html>
