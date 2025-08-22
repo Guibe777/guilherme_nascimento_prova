@@ -137,7 +137,7 @@
         <input type="text" id="endereco" name="endereco" required>
 
         <label for="telefone">Telefone:</label>
-        <input type="tel" id="telefone" name="telefone" maxlength="15" required>
+        <input type="tel" id="telefone" name="telefone" maxlength="15" placeholder="(XX) XXXXX-XXXX ou (XX) XXXX-XXXX" required>
 
         <!-- Botões -->
         <button type="submit">Salvar</button>
