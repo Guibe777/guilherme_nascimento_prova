@@ -22,9 +22,9 @@
                 $stmt->bindParam(':busca', $busca, PDO::PARAM_INT);
             }
             else {
-                $sql = "SELECT * FROM funcionario WHERE nome_funcionario LIKE :busca_nome_funcionario";
+                $sql = "SELECT * FROM funcionario WHERE nome_funcionario LIKE :busca_nome";
                 $stmt = $pdo->prepare($sql);
-                $stmt->bindValue(':busca_nome_funcionario', "%$busca%", PDO::PARAM_STR);
+                $stmt->bindValue(':busca_nome', "%$busca%", PDO::PARAM_STR);
             }
 
             $stmt->execute();
@@ -37,7 +37,6 @@
         }
     }
 
-// Menu
 // Obtendo o nome do perfil do usuário logado
 $id_perfil = $_SESSION['perfil'];
 $sqlPerfil = "SELECT nome_perfil FROM perfil WHERE id_perfil = :id_perfil";
@@ -98,9 +97,20 @@ $opcoes_menu = $permissoes["$id_perfil"];
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alterar Funcionário</title>
     <link rel="stylesheet" href="styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Certifique-se de que o JAVASCRIPT está sendo carregado corretamente -->
     <script src="scripts_func.js"></script>
+    <script src="validacoes.js"></script>
+
+    <!-- Deixando bonitinho os botões -->
+    <style>
+        button {
+            margin: 10px;
+            border-radius: 5px;
+        }
+    </style>
+
 </head>
 <body>
 
@@ -122,8 +132,9 @@ $opcoes_menu = $permissoes["$id_perfil"];
             <?php endforeach; ?>
         </ul>
     </nav>
-
-    <h2>Alterar Funcionário</h2>
+    
+    <!-- Formulário para buscar pelo funcionário -->
+    <center><h2 style="transform: translateY(25px);">Alterar Funcionário</h2></center>
     <form action="alterar_funcionario.php" method="POST">
         <label for="busca_funcionario">Digite o ID ou nome do funcionário</label>
         <input type="text" id="busca_funcionario" name="busca_funcionario" required onkeyup="buscarSugestoes()">
@@ -135,11 +146,11 @@ $opcoes_menu = $permissoes["$id_perfil"];
 
     <?php if($funcionario): ?>
         <!-- Formulário para alterar funcionário -->
-        <form action="processa_alteracao_funcionario.php" method="POST">
+        <form action="processa_alteracao_funcionario.php" method="POST" onsubmit="return validarFuncionario()">
             <input type="hidden" name="id_funcionario" value="<?=htmlspecialchars($funcionario['id_funcionario'])?>">
 
             <label for="nome_funcionario">Nome:</label>
-            <input type="text" id="nome" name="nome_funcionario" value="<?=htmlspecialchars($funcionario['nome_funcionario'])?>" required>
+            <input type="text" id="nome_funcionario" name="nome_funcionario" value="<?=htmlspecialchars($funcionario['nome_funcionario'])?>" oninput="this.value=this.value.replace(/[^a-zA-ZÀ-ÿ\s]/g,'')" required>
 
             <label for="email">E-mail:</label>
             <input type="email" id="email" name="email" value="<?=htmlspecialchars($funcionario['email'])?>" required>
@@ -148,13 +159,17 @@ $opcoes_menu = $permissoes["$id_perfil"];
             <input type="text" id="endereco" name="endereco" value="<?=htmlspecialchars($funcionario['endereco'])?>" required>
 
             <label for="telefone">Telefone:</label>
-            <input type="tel" id="telefone" name="telefone" value="<?=htmlspecialchars($funcionario['telefone'])?>" required>
+            <input type="tel" id="email" name="telefone" value="<?=htmlspecialchars($funcionario['telefone'])?>" maxlength="15" required>
 
             <button type="submit">Alterar</button>
             <button type="reset">Cancelar</button>
         </form>
     <?php endif; ?>
-    <a href="principal.php" style="color: white; border: none; border-radius: 5px; padding: 10px; background-color: #007bff; font-size: 16px; text-decoration: none; /* remove o sublinhado */">Voltar</a>
+
+    <!-- Botão de voltar -->
+    <center><a href="principal.php" class="btn btn-primary mt-3">Voltar</a></center>
+
     <center><address style="transform: translateY(220px);">Guilherme do Nascimento</address></center>
+    
 </body>
 </html>
